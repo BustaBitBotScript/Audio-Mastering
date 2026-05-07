@@ -5,9 +5,13 @@
 }
 
 :root {
-  --theme-background: #080808;
-  --theme-accent: #BCB1E7;
-  --theme-accent-secondary: #9A8FD1;
+  --theme-background: #06070a;
+  --theme-accent: #d7ccff;
+  --theme-accent-secondary: #a89be8;
+  --steel-1: #eff3fb;
+  --steel-2: #a8b3c7;
+  --steel-3: #4d5667;
+  --steel-4: #1e2430;
   --bg-card: rgba(255, 255, 255, 0.05);
   --bg-card-hover: rgba(255, 255, 255, 0.08);
   --bg-elevated: rgba(255, 255, 255, 0.1);
@@ -29,6 +33,28 @@ body {
   height: 100vh;
   overflow: hidden;
   user-select: none;
+}
+
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(215, 204, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(130, 215, 255, 0.14), transparent 40%),
+    linear-gradient(165deg, #0e1118 0%, #06070a 45%, #05060a 100%);
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(120deg, rgba(255,255,255,0.01) 0 2px, transparent 2px 11px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
 }
 
 ::selection {
@@ -167,13 +193,13 @@ body {
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #090d15;
   cursor: pointer;
 }
 
 .tips-toggle input {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   accent-color: var(--theme-accent);
   cursor: pointer;
 }
@@ -246,7 +272,7 @@ body {
 }
 
 .file-zone p {
-  color: var(--text-secondary);
+  color: #090d15;
   font-size: 14px;
 }
 
@@ -326,7 +352,7 @@ body {
 
 .btn-change {
   background: var(--bg-card);
-  color: var(--text-secondary);
+  color: #090d15;
   border: 1px solid var(--border);
   padding: 8px 16px;
   border-radius: 8px;
@@ -351,12 +377,12 @@ body {
 
 /* Transport Controls */
 .transport-btn {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 8px;
-  color: var(--text-secondary);
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(160deg, var(--steel-1) 0%, var(--steel-2) 36%, var(--steel-3) 72%, var(--steel-4) 100%);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 11px;
+  color: #090d15;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -366,9 +392,9 @@ body {
 }
 
 .transport-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--text-primary);
-  transform: scale(1.05);
+  filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.55);
 }
 
 .transport-btn:disabled {
@@ -388,8 +414,8 @@ body {
 }
 
 #playBtn {
-  background: var(--theme-accent);
-  color: var(--theme-background);
+  background: linear-gradient(165deg, #f0e5ff 0%, #d7ccff 45%, #8a74d7 100%);
+  color: #130d23;
 }
 
 #playBtn:hover:not(:disabled) {
@@ -424,8 +450,8 @@ body {
 .seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: var(--theme-accent);
   border-radius: 50%;
   cursor: pointer;
@@ -434,9 +460,11 @@ body {
 
 .waveform-container {
   width: 100%;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 6px;
+  height: 94px;
+  background: radial-gradient(circle at 50% -40%, rgba(255,255,255,0.25), rgba(255,255,255,0.02) 45%), linear-gradient(180deg, #141923 0%, #0b1018 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: inset 0 2px 7px rgba(255,255,255,0.08), inset 0 -12px 16px rgba(0,0,0,0.45);
   overflow: hidden;
   cursor: pointer;
 }
@@ -482,7 +510,7 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  color: var(--text-secondary);
+  color: #090d15;
   cursor: pointer;
   margin-right: 12px;
   user-select: none;
@@ -510,17 +538,19 @@ body {
 }
 
 .settings-card {
-  background: var(--bg-card);
-  border-radius: 12px;
+  background: linear-gradient(170deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+  border-radius: 14px;
   padding: 16px;
-  border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.25), inset 0 -10px 24px rgba(0,0,0,0.3), 0 10px 26px rgba(0,0,0,0.35);
+  transition: all 0.25s ease;
   overflow: hidden;
   min-height: 120px;
 }
 
 .settings-card:hover {
-  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.35), inset 0 -10px 24px rgba(0,0,0,0.45), 0 18px 30px rgba(0,0,0,0.45);
 }
 
 .settings-card h3 {
@@ -605,7 +635,7 @@ body {
   justify-content: space-between;
   padding: 8px 0;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #090d15;
   cursor: pointer;
   border-bottom: 1px solid var(--border-subtle);
   transition: color 0.15s;
@@ -635,10 +665,11 @@ body {
 }
 
 .toggle {
-  width: 38px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  width: 42px;
+  height: 22px;
+  background: linear-gradient(180deg, #adb8cb, #525f74);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4), inset 0 -2px 3px rgba(0,0,0,0.4);
   position: relative;
   transition: all 0.2s ease;
   flex-shrink: 0;
@@ -647,22 +678,23 @@ body {
 .toggle::after {
   content: '';
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: var(--text-muted);
   border-radius: 50%;
   top: 3px;
   left: 3px;
+  background: linear-gradient(180deg, #f5f7fc, #8d97aa);
   transition: all 0.2s ease;
 }
 
 .toggle-row input:checked+.toggle {
-  background: var(--theme-accent);
+  background: linear-gradient(180deg, #f1ebff, #9a86eb);
 }
 
 .toggle-row input:checked+.toggle::after {
-  left: 21px;
-  background: var(--theme-background);
+  left: 23px;
+  background: linear-gradient(180deg, #ffffff, #c9cfdb);
 }
 
 /* Slider Rows */
@@ -672,13 +704,13 @@ body {
   gap: 10px;
   padding: 8px 0;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #090d15;
 }
 
 .slider-row input[type="range"] {
   flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  background: linear-gradient(180deg, #2a3241, #121824);
   border-radius: 2px;
   -webkit-appearance: none;
   outline: none;
@@ -687,8 +719,8 @@ body {
 
 .slider-row input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: var(--theme-accent);
   border-radius: 50%;
   cursor: pointer;
@@ -710,7 +742,7 @@ body {
   justify-content: space-between;
   padding: 8px 0;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #090d15;
   border-bottom: 1px solid var(--border-subtle);
   gap: 8px;
 }
@@ -923,7 +955,7 @@ body {
 .preset-btn {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  color: var(--text-secondary);
+  color: #090d15;
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 11px;
@@ -973,7 +1005,7 @@ body {
   flex: 1;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  color: var(--text-secondary);
+  color: #090d15;
   padding: 8px 12px;
   border-radius: 6px;
   font-size: 11px;
@@ -1055,7 +1087,7 @@ button:active:not(:disabled) {
 }
 
 .peak-display span {
-  color: var(--text-secondary);
+  color: #090d15;
 }
 
 .overload-indicator {
@@ -1154,7 +1186,7 @@ button:active:not(:disabled) {
 
 .modal-percent {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: #090d15;
 }
 
 #modalCancelBtn {
@@ -1182,7 +1214,7 @@ button:active:not(:disabled) {
 }
 
 .btn-info:hover {
-  color: var(--text-secondary);
+  color: #090d15;
   background: rgba(255, 255, 255, 0.05);
 }
 
@@ -1216,7 +1248,7 @@ button:active:not(:disabled) {
 
 .info-panel-content {
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #090d15;
   line-height: 1.5;
 }
 

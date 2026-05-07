@@ -47,15 +47,17 @@ export function initWaveSurfer(audioBuffer, originalBlob, callbacks = {}) {
   try {
     // Create gradient
     const ctx = document.createElement('canvas').getContext('2d');
-    const waveGradient = ctx.createLinearGradient(0, 0, 0, 80);
-    waveGradient.addColorStop(0, 'rgba(188, 177, 231, 0.8)');
-    waveGradient.addColorStop(0.5, 'rgba(154, 143, 209, 0.6)');
-    waveGradient.addColorStop(1, 'rgba(100, 90, 160, 0.3)');
+    const waveGradient = ctx.createLinearGradient(0, 0, 0, 94);
+    waveGradient.addColorStop(0, 'rgba(243, 237, 255, 0.95)');
+    waveGradient.addColorStop(0.35, 'rgba(188, 177, 231, 0.88)');
+    waveGradient.addColorStop(0.7, 'rgba(122, 111, 177, 0.7)');
+    waveGradient.addColorStop(1, 'rgba(64, 74, 106, 0.45)');
 
-    const progressGradient = ctx.createLinearGradient(0, 0, 0, 80);
-    progressGradient.addColorStop(0, '#BCB1E7');
-    progressGradient.addColorStop(0.5, '#9A8FD1');
-    progressGradient.addColorStop(1, '#7A6FB1');
+    const progressGradient = ctx.createLinearGradient(0, 0, 0, 94);
+    progressGradient.addColorStop(0, '#ffffff');
+    progressGradient.addColorStop(0.3, '#d8cfff');
+    progressGradient.addColorStop(0.65, '#9986e8');
+    progressGradient.addColorStop(1, '#5e4da7');
 
     // Create blob URL for WaveSurfer (tracked for cleanup)
     // Store as both current and original so we can switch back on FX bypass
@@ -66,9 +68,12 @@ export function initWaveSurfer(audioBuffer, originalBlob, callbacks = {}) {
       container: '#waveform',
       waveColor: waveGradient,
       progressColor: progressGradient,
-      cursorColor: '#ffffff',
+      cursorColor: 'rgba(255,255,255,0.95)',
       cursorWidth: 2,
-      height: 80,
+      height: 94,
+      barWidth: 3,
+      barGap: 1,
+      barRadius: 3,
       // Avoid misleading A/B comparisons: keep waveform amplitude true to the actual audio level.
       normalize: false,
       interact: true,
